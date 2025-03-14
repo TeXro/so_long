@@ -1,0 +1,122 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
+/*   Updated: 2025/03/14 12:48:59 by zzin             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+char *tmp_map[] =
+{
+	"1111111111111",
+	"1000000000001",
+	"1E000000C0001",
+	"1000000000001",
+	"1000000P00001",
+	"1111111111111"
+};
+
+t_game game;
+
+void	init_map(int w)
+{
+	// game.map_info = load_map(path);
+	game.map_info.height = 10;
+	game.map_info.width = w;
+	game.map_info.map = tmp_map;
+}
+
+void	init_window()
+{
+	game.window_info.mlx = mlx_init();
+	game.window_info.win = mlx_new_window(game.window_info.mlx, 64 * (game.map_info.width + 1), 64 * game.map_info.height, "zzin");
+}
+
+// typedef struct s_object
+// {
+// 	void *o;
+// 	int z;
+// 	int x;
+// 	int y;
+
+// 	o = mlx_xpm_file_to_image(game.window_info.mlx, "./asset/wall.xpm", &z, &z);
+// 	// mlx_put_image_to_window(game.window_info.mlx, game.window_info.win, o, 0, 0);
+// }	t_object;
+void	init_game(int w)
+{
+	init_map(w);
+	init_window();
+}
+
+void	run_game()
+{
+	mlx_loop(game.window_info.mlx);
+}
+
+void	wall(int x, int y)
+{
+	int		i;
+	void	*a;
+
+	a = mlx_xpm_file_to_image(game.window_info.mlx, "./asset/wall.xpm", &i, &i);
+	mlx_put_image_to_window(game.window_info.mlx, game.window_info.win, a, x, y);
+}
+void	space(int x, int y)
+{
+	int		i;
+	void	*a;
+
+	a = mlx_xpm_file_to_image(game.window_info.mlx, "./asset/space.xpm", &i, &i);
+	mlx_put_image_to_window(game.window_info.mlx, game.window_info.win, a, x, y);
+}
+void	player(int x, int y)
+{
+	int		i;
+	void	*a;
+
+	a = mlx_xpm_file_to_image(game.window_info.mlx, "./asset/player.xpm", &i, &i);
+	mlx_put_image_to_window(game.window_info.mlx, game.window_info.win, a, x, y);
+}
+int	main(int ac, char **av)
+{
+	int fd;
+	int x;
+	int y;
+	char res;
+
+	if(ac != 2)
+		werr("./so_long <map_name.ber>");
+	fd = open(av[1], O_RDONLY);
+	if (fd < 0 )
+		werr("can't find this map");
+	res = next_byte(fd);
+	init_game(is_valid(av[1]));
+	x = 0;
+	y = 0;
+	while (res)
+	{
+		// sleep(1);
+		if (res == '1')
+			wall(x, y);
+		else if (res == '0')
+			space(x, y);
+		else if (res == 'P')
+			player(x, y);
+		else if (res == '\n')
+		{
+			y += 64;
+			x = 0;
+			res = next_byte(fd);
+			continue;
+		}
+		res = next_byte(fd);
+		x += 64;
+	}
+	run_game();
+}
