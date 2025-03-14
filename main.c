@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/14 12:48:59 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/14 14:14:14 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,30 +59,25 @@ void	run_game()
 	mlx_loop(game.window_info.mlx);
 }
 
-void	wall(int x, int y)
+void obj(int x, int y, char c)
 {
 	int		i;
 	void	*a;
 
-	a = mlx_xpm_file_to_image(game.window_info.mlx, "./asset/wall.xpm", &i, &i);
+	if (c == 'P')
+		a = mlx_xpm_file_to_image(game.window_info.mlx, "asset/player.xpm", &i, &i);
+	else if (c == 'E')
+		a = mlx_xpm_file_to_image(game.window_info.mlx, "asset/exit.xpm", &i, &i);
+	else if (c == '1')
+		a = mlx_xpm_file_to_image(game.window_info.mlx, "asset/wall.xpm", &i, &i);
+	else if (c == '0')
+		a = mlx_xpm_file_to_image(game.window_info.mlx, "asset/space.xpm", &i, &i);
+	else if (c == 'C')
+		a = mlx_xpm_file_to_image(game.window_info.mlx, "asset/exit.xpm", &i, &i);
 	mlx_put_image_to_window(game.window_info.mlx, game.window_info.win, a, x, y);
+	
 }
-void	space(int x, int y)
-{
-	int		i;
-	void	*a;
 
-	a = mlx_xpm_file_to_image(game.window_info.mlx, "./asset/space.xpm", &i, &i);
-	mlx_put_image_to_window(game.window_info.mlx, game.window_info.win, a, x, y);
-}
-void	player(int x, int y)
-{
-	int		i;
-	void	*a;
-
-	a = mlx_xpm_file_to_image(game.window_info.mlx, "./asset/player.xpm", &i, &i);
-	mlx_put_image_to_window(game.window_info.mlx, game.window_info.win, a, x, y);
-}
 int	main(int ac, char **av)
 {
 	int fd;
@@ -102,21 +97,17 @@ int	main(int ac, char **av)
 	while (res)
 	{
 		// sleep(1);
-		if (res == '1')
-			wall(x, y);
-		else if (res == '0')
-			space(x, y);
-		else if (res == 'P')
-			player(x, y);
-		else if (res == '\n')
+		if (res == '\n')
 		{
 			y += 64;
 			x = 0;
-			res = next_byte(fd);
-			continue;
+		}else
+		{
+			obj(x, y, res);
+			x += 64;
 		}
 		res = next_byte(fd);
-		x += 64;
+		
 	}
 	run_game();
 }
