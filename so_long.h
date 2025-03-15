@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:16:33 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/14 06:12:39 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/15 06:01:36 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "mlx.h"
+
+typedef struct dem
+{
+	int h;
+	int w;
+} t_dem;
 
 typedef struct s_window
 {
@@ -50,7 +56,7 @@ typedef struct s_game
 	t_map	 map_info;
 }	t_game;
 char	next_byte(int fd);
-int		is_valid(char *path);
+t_dem	is_valid(char *path);
 void	werr(char *str);
 
 #endif

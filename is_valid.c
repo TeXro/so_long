@@ -6,94 +6,82 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:21:10 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/14 13:55:56 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/15 09:27:44 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// int corner(char *path)
-// {
-// 	int fd;
-// 	int i;
-// 	int c;
-
-// 	fd = open(path, O_RDONLY);
-// 	i = 0;
-// 	c = 2;
-// 	while (c)
-// 	{
-// 		if(i == 0)
-// 		{
-// 			while (c == '1')
-// 				c = next_byte(fd);
-// 		}
-		
-		
-// 	}
-	
-// }
-
 int width(int fd)
 {
-	int h;
+	int w;
 	int i;
 	char c;
 
 	c = 2;
-	h = 0;
+	w = 0;
 	i = 0;
 	while (c)
 	{
 		c = next_byte(fd);
 		if (c == '\n' || c == '\0')
 		{
-			if (h && h != i)
+			if (w && w != i)
 				werr("Invalid map");
-			h = i;
+			w = i;
 			i = 0;
 		}
 		if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
 			i++;
 	}
-	return (h);
+	return (w);
 }
 
-void line(int fd, int w)
+int line(int fd, int w)
 {
 	char c;
 	int i;
+	int h;
 
+	h = 1;
 	c = next_byte(fd);
 	i = 0;
 	while(c)
 	{
 		if (c == '\n')
+		{
+			h += 1;
 			i = 0;
+		}
 		if (c == '1')
 			i++;
 		c = next_byte(fd);
 	}
 	if (i != w)
-		werr("!");
+		werr("Invalid map");
+	return h;
 }
 void is_extra(int fd)
 {
 	char	c;
 	int		total;
+	int		zero;
 
+	zero = 0;
 	c = '1';
 	total = 0;
 	while (c)
 	{
+		if (c == '0')
+			zero = 1;
 		if (!(c == '0' || c == '1' || c == 'C' || c == 'P' || c == 'E' || c == '\n'))
-			exit(0);
-		else if(c == 'C' || c == 'P' || c == 'E')
+			werr("Invalid map");
+		else if(c == 'P' || c == 'E')
 			total++;
 		c = next_byte(fd);
 	}
-	if (total != 3)
-		exit(0);
+	if (total != 2 || zero == 0)
+		werr("Invalid map");
 }
 
 int first(int fd)
@@ -107,7 +95,7 @@ int first(int fd)
 	{
 		i++;
 		if(c == '0')
-			werr("C");
+			werr("Invalid mapv");
 		c = next_byte(fd);
 	}
 	return i;
@@ -124,14 +112,14 @@ void corner(int fd)
 	while (c)
 	{
 		if(i == 0 && c != '1')
-			werr("cor!!");
+			werr("Invalid map");
 		s = c;
 		c = next_byte(fd);
 		if (c == '\n')
 		{
 			i = 0;
 			if (s != '1')
-				werr("corner!!");
+				werr("Invalid map");
 			c = next_byte(fd);
 		}
 		else
@@ -139,23 +127,24 @@ void corner(int fd)
 	}
 }
 
-int is_valid(char *path)
+t_dem is_valid(char *path)
 {
-	int fd;
-	int w;
+	int		fd;
+	t_dem	dem;
 
 	fd = open(path, O_RDONLY);
-	w = first(fd);
+	dem.w = first(fd);
 	corner(fd);
-	if(w < 3)
-		werr("3");
+	if(dem.w < 3)
+		werr("Invalid map");
 	fd = open(path, O_RDONLY);
 	is_extra(fd);
 	fd = open(path, O_RDONLY);
-	line(fd, w);
+	dem.h = line(fd, dem.w);
 	fd = open(path, O_RDONLY);
-	w = width(fd);
-	if (w < 3)
+	dem.w = width(fd);
+	if (dem.w < 3)
 		exit(0);
-	return w;
+	printf("%d\n", dem.h);
+	return (dem);
 }
