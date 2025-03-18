@@ -1,16 +1,17 @@
 CC = cc
-FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+CFLAGS = -Wall -Werror -Wextra -w
+MLXFLAGS = -lmlx -lXext -lX11
 NAME = so_long
-SRC = main.c next_byte.c is_valid.c werr.c moves.c
+SRC = main.c utils.c next_byte.c is_valid.c werr.c moves.c out.c
 OBJ = ${SRC:.c=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) $(MLXFLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)

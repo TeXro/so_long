@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:12:58 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/12 02:50:14 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/18 14:56:35 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	next_byte(int fd)
 
 	rb = read(fd, &byte, 1);
 	if (rb == 0)
-		return '\0';
-	
-	return  byte;
+		return ('\0');
+	return (byte);
 }
