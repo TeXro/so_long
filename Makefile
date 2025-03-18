@@ -1,7 +1,7 @@
 CC = cc
 FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 NAME = so_long
-SRC = main.c next_byte.c is_valid.c werr.c
+SRC = main.c next_byte.c is_valid.c werr.c moves.c
 OBJ = ${SRC:.c=.o}
 
 all: $(NAME)

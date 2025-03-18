@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:16:33 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/15 06:01:36 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/18 03:33:00 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+
+typedef struct obj
+{
+	void *p;
+	void *w;
+	void *s;
+	void *e;
+	void *c;
+} t_obj;
 
 typedef struct dem
 {
@@ -39,24 +50,33 @@ typedef struct s_player
 {
 	int		x;
 	int 	y;
-	void	*texture;
 }	t_player;
 
 typedef struct s_map
 {
 	int height;
 	int width;
+	int a;
+	int i;
 	char **map;
 }	t_map;
 
 typedef struct s_game
 {
-	t_player player_info;
+	int			coin;
+	t_player	player_info;
+	t_obj		o;
 	t_window window_info;
 	t_map	 map_info;
 }	t_game;
 char	next_byte(int fd);
 t_dem	is_valid(char *path);
 void	werr(char *str);
+void	spawn(t_game *g);
+void	right(t_game *g);
+void	left(t_game *g);
+void	up(t_game *g);
+void	down(t_game *g);
+
 
 #endif
