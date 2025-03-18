@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:24:36 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/18 20:30:03 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/18 20:43:37 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	f_arr(char **arr)
 	free(arr);
 }
 
-int	out(t_game *g)
+int	out(t_game *g, int ex)
 {
 	if (g->o.p)
 		mlx_destroy_image(g->window_info.mlx, g->o.p);
@@ -72,5 +72,7 @@ int	out(t_game *g)
 	mlx_destroy_display(g->window_info.mlx);
 	f_arr(g->map_info.map);
 	free(g->window_info.mlx);
+	if (ex == 1)
+		werr("can't load img");
 	exit(0);
 }

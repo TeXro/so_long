@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:37:19 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/18 20:13:08 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/18 20:42:20 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	key_press(int key, t_game *g)
 	else if (key == XK_s && map[a + 1][i] != '1')
 		down(g);
 	else if (key == XK_Escape)
-		out(g);
+		out(g, 0);
 	mlx_put_image_to_window(g->window_info.mlx,
 		g->window_info.win, g->o.p, g->player_info.x, g->player_info.y);
 	return (0);
@@ -135,5 +135,5 @@ void	init_obj(t_game *g)
 	g->o.c = mlx_xpm_file_to_image(g->window_info.mlx,
 			"asset/coin.xpm", &i, &i);
 	if (!g->o.w || !g->o.s || !g->o.p || !g->o.e || !g->o.c)
-		out(g);
+		out(g, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 03:14:37 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/18 14:58:06 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/18 20:41:47 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	right(t_game *g)
 	if (g->map_info.map[g->map_info.a][g->map_info.i + 1] == 'E')
 	{
 		if (g->coin < 1)
-			out(g);
+			out(g, 0);
 		else
 			return ;
 	}
@@ -41,7 +41,7 @@ void	left(t_game *g)
 	if (g->map_info.map[g->map_info.a][g->map_info.i - 1] == 'E')
 	{
 		if (g->coin < 1)
-			out(g);
+			out(g, 0);
 		else
 			return ;
 	}
@@ -60,7 +60,7 @@ void	up(t_game *g)
 	if (g->map_info.map[g->map_info.a - 1][g->map_info.i] == 'E')
 	{
 		if (g->coin < 1)
-			out(g);
+			out(g, 0);
 		else
 			return ;
 	}
@@ -79,7 +79,7 @@ void	down(t_game *g)
 	if (g->map_info.map[g->map_info.a + 1][g->map_info.i] == 'E')
 	{
 		if (g->coin < 1)
-			out(g);
+			out(g, 0);
 		else
 			return ;
 	}
