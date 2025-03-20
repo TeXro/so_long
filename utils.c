@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:37:19 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/18 20:42:20 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/20 03:47:53 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,6 @@ void	draw(char **smap, t_game *g)
 		x = 0;
 		while (smap[a][i])
 		{
-			if (smap[a][i] == 'P')
-			{
-				g->map_info.a = a;
-				g->map_info.i = i;
-			}
 			po (smap[a][i], x, y, g);
 			x += 64;
 			i++;

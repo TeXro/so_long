@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:39:06 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/19 01:44:30 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/20 03:46:04 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	flood_fill(t_game *g, char **str, int y, int x)
 	}
 }
 
-void	check_fmap(char **fmap, char **pmap)
+void	check_fmap(char **fmap, char **pmap, t_game *g)
 {
 	int	i;
 	int	j;

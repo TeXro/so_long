@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:16:33 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/18 20:41:16 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/20 03:47:58 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_game
 }	t_game;
 void	flood_fill(t_game *g, char **str, int y, int x);
 void	get_p(t_game *g);
-void	check_fmap(char **fmap, char **pmap);
+void	check_fmap(char **fmap, char **pmap, t_game *g);
 int		width(int fd);
 char	next_byte(int fd);
 t_dem	is_valid(char *path);
@@ -84,6 +84,6 @@ void	spawn(t_game *g);
 char	**str_map(t_dem dem, int fd);
 int		key_press(int key, t_game *g);
 void	po(char c, int x, int y, t_game *p);
-void	draw(char **smap, t_game *game);
+void	draw(char **smap, t_game *g);
 
 #endif

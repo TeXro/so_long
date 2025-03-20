@@ -1,13 +1,14 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -w
 MLXFLAGS = -lmlx -lXext -lX11
 NAME = so_long
 SRC = main.c utils.c next_byte.c is_valid.c werr.c moves.c out.c
 OBJ = ${SRC:.c=.o}
+HEADER = so_long.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADER)
 	$(CC) $(OBJ) $(CFLAGS) $(MLXFLAGS) -o $(NAME)
 
 %.o: %.c
