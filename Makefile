@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -w
+CFLAGS = -Wall -Werror -Wextra
 MLXFLAGS = -lmlx -lXext -lX11
 NAME = so_long
 SRC = main.c utils.c next_byte.c is_valid.c werr.c moves.c out.c

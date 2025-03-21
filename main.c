@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/21 18:12:47 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/21 19:59:45 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	init_game(t_dem dem, char *path)
 {
 	int		fd;
 	char	**pmap;
-	int		x;
-	int		y;
 
 	fd = open(path, O_RDONLY);
 	pmap = str_map(dem, fd);
