@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:39:06 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/20 03:46:04 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/21 18:13:34 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	check_fmap(char **fmap, char **pmap, t_game *g)
 		{
 			if (fmap[i][j] == 'C' || fmap[i][j] == 'E')
 			{
+				mlx_destroy_display(g->window_info.mlx);
+				free(g->window_info.mlx);
 				f_arr(pmap);
 				f_arr(fmap);
 				werr("You can't win in this map");

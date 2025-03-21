@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/20 03:47:36 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/21 18:12:47 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_window(int fd, t_dem dem, char **pmap)
 		mlx_destroy_display(g_game.window_info.mlx);
 		free(g_game.window_info.mlx);
 		f_arr(pmap);
-		werr("map too big");
+		werr("map bigger than screen size");
 	}
 	fmap = str_map(dem, fd);
 	flood_fill(&g_game, fmap, g_game.map_info.a, g_game.map_info.i);
@@ -58,7 +58,6 @@ void	init_game(t_dem dem, char *path)
 	pmap = str_map(dem, fd);
 	init_map(dem, pmap);
 	get_p(&g_game);
-	printf("get>a=%d i=%d\n", g_game.map_info.a, g_game.map_info.i);
 	fd = open(path, O_RDONLY);
 	init_window(fd, dem, pmap);
 	g_game.coin = 0;
