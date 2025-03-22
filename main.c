@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/22 18:17:01 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/22 23:18:56 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	main(int ac, char **av)
 					if (av[1][i++] == '\0')
 						i = 0;
 	if (i)
-		werr("only .ber");
+		werr("game accept only (.ber) maps");
 	g_game.move_count = 0;
 	init_game(is_valid(av[1]), av[1]);
 	run_game();
