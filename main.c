@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/21 19:59:45 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/22 01:48:30 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		werr("can't find this map");
+	g_game.move_count = 0;
 	init_game(is_valid(av[1]), av[1]);
 	run_game();
 }

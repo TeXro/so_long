@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:24:36 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/18 20:43:37 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/22 01:41:07 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,11 @@ int	out(t_game *g, int ex)
 	if (ex == 1)
 		werr("can't load img");
 	exit(0);
+}
+
+void	print_move(int move)
+{
+	write(1, "movements => ", 14);
+	write_num(move);
+	write(1, "\n", 1);
 }

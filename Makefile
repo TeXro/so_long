@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 MLXFLAGS = -lmlx -lXext -lX11
 NAME = so_long
-SRC = main.c utils.c next_byte.c is_valid.c werr.c moves.c out.c
+SRC = main.c write_num.c utils.c next_byte.c is_valid.c werr.c moves.c out.c
 OBJ = ${SRC:.c=.o}
 HEADER = so_long.h
 

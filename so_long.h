@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:16:33 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/22 00:35:13 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/22 01:38:16 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ typedef struct s_map
 
 typedef struct s_game
 {
+	int			move_count;
 	int			coin;
 	t_player	player_info;
 	t_obj		o;
 	t_window	window_info;
 	t_map		map_info;
 }	t_game;
+void	write_num(int n);
+void	print_move(int move);
 void	flood_fill(t_game *g, char **str, int y, int x);
 void	get_p(t_game *g);
 void	check_fmap(char **fmap, char **pmap, t_game *g);
