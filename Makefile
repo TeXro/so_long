@@ -8,10 +8,10 @@ HEADER = so_long.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJ)
 	$(CC) $(OBJ) $(CFLAGS) $(MLXFLAGS) -o $(NAME)
 
-%.o: %.c
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
