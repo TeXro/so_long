@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/22 01:48:30 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/22 18:17:01 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,24 @@ void	run_game(void)
 int	main(int ac, char **av)
 {
 	int	fd;
+	int	i;
 
 	if (ac != 2)
 		werr("./so_long <map_name.ber>");
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		werr("can't find this map");
+	i = 0;
+	while (av[1][i] != '.')
+		i++;
+	if (av[1][i++] == '.')
+		if (av[1][i++] == 'b')
+			if (av[1][i++] == 'e')
+				if (av[1][i++] == 'r')
+					if (av[1][i++] == '\0')
+						i = 0;
+	if (i)
+		werr("only .ber");
 	g_game.move_count = 0;
 	init_game(is_valid(av[1]), av[1]);
 	run_game();

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:21:10 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/19 02:07:48 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/22 17:32:45 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,27 @@ int	line(int fd, int w)
 void	is_extra(int fd)
 {
 	char		c;
-	int			total;
+	int			pe[2];
 	int			coin;
 
 	c = '1';
-	total = 0;
+	pe[0] = 0;
+	pe[1] = 0;
 	coin = 0;
 	while (c)
 	{
 		if (!(c == '0' || c == '1' || c == 'C'
 				|| c == 'P' || c == 'E' || c == '\n'))
 			werr("Invalid map");
-		else if (c == 'P' || c == 'E')
-			total++;
+		if (c == 'P')
+			pe[0]++;
+		else if (c == 'E')
+			pe[1]++;
 		else if (c == 'C')
 			coin++;
 		c = next_byte(fd);
 	}
-	if (total != 2 || coin == 0)
+	if (pe[0] != 1 || pe[1] != 1 || coin == 0)
 		werr("Invalid map");
 }
 
@@ -71,8 +74,8 @@ int	first(int fd)
 	while (c && c != '\n')
 	{
 		i++;
-		if (c == '0')
-			werr("Invalid mapv");
+		if (c != '1')
+			werr("Invalid map");
 		c = next_byte(fd);
 	}
 	return (i);
