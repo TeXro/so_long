@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:37:19 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/22 01:06:13 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/23 20:25:07 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ void	po(char c, int x, int y, t_game *g)
 	else if (c == '0')
 		mlx_put_image_to_window(g->window_info.mlx,
 			g->window_info.win, g->o.s, x, y);
-	else if (c == 'E')
-		mlx_put_image_to_window(g->window_info.mlx,
-			g->window_info.win, g->o.e, x, y);
 	else if (c == 'C')
 	{
 		g->coin++;
 		mlx_put_image_to_window(g->window_info.mlx,
 			g->window_info.win, g->o.c, x, y);
 	}
+	else if (c == 'E')
+		mlx_put_image_to_window(g->window_info.mlx,
+			g->window_info.win, g->o.e, x, y);
 	else if (c == 'P')
 	{
 		g->player_info.x = x;

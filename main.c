@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/22 23:53:59 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/23 20:23:22 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	init_window(int fd, t_dem dem, char **pmap)
 	g_game.window_info.win = mlx_new_window(g_game.window_info.mlx,
 			64 * g_game.map_info.width, 64 * g_game.map_info.height, "so_long");
 	init_obj(&g_game);
-	mlx_hook(g_game.window_info.win, 17, 1L << 17, out, &g_game);
 	mlx_key_hook (g_game.window_info.win, key_press, &g_game);
+	mlx_hook(g_game.window_info.win, 17, 1L << 0, out, &g_game);
 }
 
 void	init_game(t_dem dem, char *path)
@@ -78,7 +78,8 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		werr("can't find this map");
 	i = 0;
-	while (av[1][i++]);
+	while (av[1][i])
+		i++;
 	while (av[1][i] != '.')
 		i--;
 	if (av[1][i++] == '.')
