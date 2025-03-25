@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/23 20:23:22 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:46:31 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,11 @@ void	init_window(int fd, t_dem dem, char **pmap)
 	int		y;
 
 	g_game.window_info.mlx = mlx_init();
+	if (!g_game.window_info.mlx)
+		out(&g_game, "mlx_init() failed\n");
 	mlx_get_screen_size(g_game.window_info.mlx, &x, &y);
 	if ((dem.w * 64) > x || (dem.h * 64) > y)
-	{
-		mlx_destroy_display(g_game.window_info.mlx);
-		free(g_game.window_info.mlx);
-		f_arr(pmap);
-		werr("map bigger than screen size");
-	}
+		out(&g_game, "Map bigger than screen size");
 	fmap = str_map(dem, fd);
 	flood_fill(&g_game, fmap, g_game.map_info.a, g_game.map_info.i);
 	check_fmap(fmap, pmap, &g_game);
@@ -44,7 +41,7 @@ void	init_window(int fd, t_dem dem, char **pmap)
 			64 * g_game.map_info.width, 64 * g_game.map_info.height, "so_long");
 	init_obj(&g_game);
 	mlx_key_hook (g_game.window_info.win, key_press, &g_game);
-	mlx_hook(g_game.window_info.win, 17, 1L << 0, out, &g_game);
+	mlx_hook(g_game.window_info.win, 17, 1L << 17, out, &g_game);
 }
 
 void	init_game(t_dem dem, char *path)

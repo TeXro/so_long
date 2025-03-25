@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 03:14:37 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/22 01:47:57 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 00:43:03 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	right(t_game *g)
 		if (g->coin < 1)
 		{
 			print_move(++g->move_count);
-			out(g, 0);
+			out(g, NULL);
 		}
 		else
 			return ;
@@ -47,7 +47,7 @@ void	left(t_game *g)
 		if (g->coin < 1)
 		{
 			print_move(++g->move_count);
-			out(g, 0);
+			out(g, NULL);
 		}
 		else
 			return ;
@@ -70,7 +70,7 @@ void	up(t_game *g)
 		if (g->coin < 1)
 		{
 			print_move(++g->move_count);
-			out(g, 0);
+			out(g, NULL);
 		}
 		else
 			return ;
@@ -93,7 +93,7 @@ void	down(t_game *g)
 		if (g->coin < 1)
 		{
 			print_move(++g->move_count);
-			out(g, 0);
+			out(g, NULL);
 		}
 		else
 			return ;
