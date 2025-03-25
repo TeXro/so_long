@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:37:19 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/25 00:43:15 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 14:57:16 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,5 @@ void	init_obj(t_game *g)
 	g->o.c = mlx_xpm_file_to_image(g->window_info.mlx,
 			"asset/coin.xpm", &i, &i);
 	if (!g->o.w || !g->o.s || !g->o.p || !g->o.e || !g->o.c)
-		out(g, NULL);
+		out(g, "can't load img");
 }

@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:39:06 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/25 03:55:51 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 14:28:52 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	werr(char *str)
 	exit (1);
 }
 
-int xout(t_game *g)
+int	xout(t_game *g)
 {
 	if (g->o.p)
 		mlx_destroy_image(g->window_info.mlx, g->o.p);
