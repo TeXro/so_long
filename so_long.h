@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:16:33 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/25 00:45:12 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 03:56:17 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	left(t_game *g);
 void	up(t_game *g);
 void	down(t_game *g);
 void	f_arr(char **arr);
-int		out(t_game *g, char *err);
+void	out(t_game *g, char *err);
+int		xout(t_game *g);
 void	spawn(t_game *g);
 char	**str_map(t_dem dem, int fd);
 int		key_press(int key, t_game *g);

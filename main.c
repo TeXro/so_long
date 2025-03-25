@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 20:14:39 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/25 00:46:31 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 03:56:23 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	init_window(int fd, t_dem dem, char **pmap)
 	flood_fill(&g_game, fmap, g_game.map_info.a, g_game.map_info.i);
 	check_fmap(fmap, pmap, &g_game);
 	f_arr(fmap);
+	init_obj(&g_game);
 	g_game.window_info.win = mlx_new_window(g_game.window_info.mlx,
 			64 * g_game.map_info.width, 64 * g_game.map_info.height, "so_long");
-	init_obj(&g_game);
 	mlx_key_hook (g_game.window_info.win, key_press, &g_game);
-	mlx_hook(g_game.window_info.win, 17, 1L << 17, out, &g_game);
+	mlx_hook(g_game.window_info.win, 17, 1L << 17, xout, &g_game);
 }
 
 void	init_game(t_dem dem, char *path)

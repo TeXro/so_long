@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:39:06 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/25 00:33:00 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 03:55:51 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,35 @@
 
 void	werr(char *str)
 {
-	if (!str)
+	if (str == NULL)
 		exit(0);
 	write(2, "Error\n", 6);
 	while (*str)
 		write(2, str++, 1);
 	exit (1);
+}
+
+int xout(t_game *g)
+{
+	if (g->o.p)
+		mlx_destroy_image(g->window_info.mlx, g->o.p);
+	if (g->o.e)
+		mlx_destroy_image(g->window_info.mlx, g->o.e);
+	if (g->o.w)
+		mlx_destroy_image(g->window_info.mlx, g->o.w);
+	if (g->o.s)
+		mlx_destroy_image(g->window_info.mlx, g->o.s);
+	if (g->o.c)
+		mlx_destroy_image(g->window_info.mlx, g->o.c);
+	if (g->window_info.win)
+		mlx_destroy_window(g->window_info.mlx, g->window_info.win);
+	if (g->window_info.mlx)
+		mlx_destroy_display(g->window_info.mlx);
+	if (g->window_info.mlx)
+		free(g->window_info.mlx);
+	if (g->map_info.map)
+		f_arr(g->map_info.map);
+	exit(0);
 }
 
 void	get_p(t_game *g)

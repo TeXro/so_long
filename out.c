@@ -6,7 +6,7 @@
 /*   By: zzin <zzin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:24:36 by zzin              #+#    #+#             */
-/*   Updated: 2025/03/25 00:45:47 by zzin             ###   ########.fr       */
+/*   Updated: 2025/03/25 03:57:09 by zzin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	f_arr(char **arr)
 	free(arr);
 }
 
-int out(t_game *g, char *err)
+void	out(t_game *g, char *err)
 {
 	if (g->o.p)
 		mlx_destroy_image(g->window_info.mlx, g->o.p);
@@ -77,7 +77,6 @@ int out(t_game *g, char *err)
 	if (g->map_info.map)
 		f_arr(g->map_info.map);
 	werr(err);
-	return 1;
 }
 
 void	print_move(int move)
